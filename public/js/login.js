@@ -3,12 +3,10 @@ import axios from 'axios';
 import { showAlert } from './alert';
 export const login = async (email, password) => {
   try {
-    const data = await axios.post('http://localhost:3000/login', {
+    const data = await axios.post('/login', {
       email,
       password,
     });
-
-    console.log(data.data);
 
     if (data.data.status === 'success') {
       showAlert(data.data.status, 'login success');
@@ -25,8 +23,7 @@ export const login = async (email, password) => {
 
 export const logout = async () => {
   try {
-    const data = await axios.get('http://localhost:3000/logout');
-    console.log(data, 'logout dat');
+    const data = await axios.get('/logout');
     if (data.data.type === 'success') {
       showAlert(data.data.status, 'logout successfully');
       location.assign('/');

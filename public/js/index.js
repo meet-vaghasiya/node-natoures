@@ -32,7 +32,6 @@ profileEl?.addEventListener('submit', (e) => {
   formData.append('email', document.getElementById('email').value);
   formData.append('name', document.getElementById('name').value);
   formData.append('photo', document.getElementById('photo').files[0]);
-  console.log(formData, 'adfasdf');
 
   updateUser('user', formData);
 });

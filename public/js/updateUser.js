@@ -3,10 +3,10 @@ import axios from 'axios';
 import { showAlert } from './alert';
 
 export const updateUser = async (type, body) => {
-  let url = 'http://localhost:3000/api/update-user';
+  let url = '/api/update-user';
 
   if (type === 'password') {
-    url = 'http://localhost:3000/api/update-password';
+    url = '/api/update-password';
   }
 
   try {

@@ -38,7 +38,7 @@ exports.checkout = catchAsync(async (req, res, next) => {
         quantity: 1,
         name: tour.name,
         description: tour.summary,
-        images: [`http://localhost:3000/img/tours/${tour.imageCover}`],
+        images: [`/img/tours/${tour.imageCover}`],
         currency: 'inr',
       },
     ],

@@ -24,7 +24,6 @@ function fileFilter(req, file, cb) {
   if (file.mimetype.split('/')[0] !== 'image') {
     cb(new Error('only image is permitted'));
   } else {
-    console.log('valid image');
     cb(null, true);
   }
 }

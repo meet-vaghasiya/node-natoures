@@ -7,11 +7,7 @@ var stripe = Stripe(
 
 export const booking = async (tourId) => {
   try {
-    const data = await axios.post(
-      `http://localhost:3000/api/v1/booking/checkout/${tourId}`
-    );
-
-    console.log(data.data, 'pppppppppppp');
+    const data = await axios.post(`/api/v1/booking/checkout/${tourId}`);
 
     if (data.data.status === 'success') {
       await stripe.redirectToCheckout({

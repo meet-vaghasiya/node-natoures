@@ -6,7 +6,6 @@ const handleCastErrorDB = (err) => {
 };
 
 const errorProduction = (err, req, res, statusCode) => {
-  console.log('comeing');
   if (req.originalUrl.startsWith('/api')) {
     if (err.isOperational) {
       res.status(err.statusCode).json({
@@ -58,7 +57,6 @@ module.exports = (err, req, res, next) => {
   } else if (process.env.NODE_ENV === 'production') {
     let error = { ...err };
     error.message = err.message;
-    console.log('pppppppppppp', err, 'pppppppppppp');
     if (err.name === 'CaseError') error = handleCastErrorDB(error);
     else if (err.name === 'JsonWebTokenError')
       error = handleJwtTokenError(error);

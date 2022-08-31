@@ -12,7 +12,6 @@ export const showAlert = (type, message) => {
 const hideAlert = () => {
   const alertEl = document.getElementsByClassName('alert');
   if (alertEl.length) {
-    console.log(alertEl, 'alertEL');
     alertEl[0].remove();
   }
 };

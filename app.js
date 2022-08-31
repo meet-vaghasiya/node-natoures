@@ -5,6 +5,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const hpp = require('hpp');
 const path = require('path');
 var cors = require('cors');
+var compression = require('compression');
 
 const cookieParser = require('cookie-parser');
 
@@ -22,6 +23,8 @@ app.use(cookieParser());
 app.use(cors());
 app.use(helmet());
 app.use(mongoSanitize());
+app.use(compression());
+
 app.use(
   hpp({
     whitelist: 'duration',

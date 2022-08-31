@@ -58,7 +58,6 @@ exports.login = catchAsync(async (req, res, next) => {
   }
 
   const user = await User.findOne({ email }).select('+password');
-  console.log(user);
   if (!user || !(await user.validatePassword(password, user.password))) {
     return next(new AppError('user and password does not match'));
   }
@@ -76,7 +75,6 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   }
 
   const user = await User.findOne({ email: req.body.email });
-  console.log(user, 'forgot passsword');
   if (!user) {
     return next(new AppError('User not found', 401));
   }
@@ -119,7 +117,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     passwordResetToken: decode,
     passwordResetExpireAt: { $gt: Date.now() },
   });
-  console.log(user, decode, 'this is userasdf');
 
   if (!user) {
     return next(new AppError('token not found or token is exprired.'));
@@ -128,9 +125,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   user.password = req.body.password;
   user.passwordResetToken = undefined;
   user.passwordResetExpireAt = undefined;
-  console.log('before sabe');
   await user.save();
-  console.log('after saeve');
 
   const token = getJWTToken({ id: user._id });
 
@@ -177,7 +172,6 @@ exports.protected = catchAsync(async (req, res, next) => {
   const head =
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer ');
-  console.log(head, 'header token');
   let token = null;
   if (head) {
     token = req.headers.authorization.split(' ')[1];
@@ -237,7 +231,6 @@ exports.isLoggin = async (req, res, next) => {
       //  4. password is not changed
       if (user.changedPasswordAfter(user.iat)) return next();
       res.locals.user = user;
-      console.log(res.locals.user);
       return next();
     }
   } catch {

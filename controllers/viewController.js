@@ -75,8 +75,6 @@ exports.logout = catchAsync(async (req, res, next) => {
     expire: new Date() + 1,
     httpOnly: true,
   });
-  console.log(
-    'asssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'
-  );
+
   res.status(200).json({ type: 'success' });
 });

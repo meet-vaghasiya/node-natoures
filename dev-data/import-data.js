@@ -28,14 +28,11 @@ mongoose
 
 async function createTours() {
   try {
-    console.log('creat tour');
     await User.create(JSON.parse(userRawFile));
     const tours = await Tour.init().then(async () => {
       await Tour.create(JSON.parse(rawFile));
     });
     await Review.create(JSON.parse(reviewRawFile));
-
-    console.log('end create tour');
   } catch (err) {
     console.log('Error from import-data.js', err.message);
   }
@@ -43,11 +40,9 @@ async function createTours() {
 
 async function deleteTour() {
   try {
-    console.log('statrt');
     const res = await Tour.deleteMany();
     await User.deleteMany();
     await Review.deleteMany();
-    console.log('deleted');
   } catch (err) {
     console.log('Error from import-data.js', err.message);
   }

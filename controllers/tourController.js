@@ -11,7 +11,6 @@ const {
 // middlewares
 
 exports.top5TourMiddleware = catchAsync((req, res, next) => {
-  console.log('middleware running');
   req.query.sort = 'rating price';
   req.query.limit = 5;
   next();

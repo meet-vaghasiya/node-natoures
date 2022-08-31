@@ -31,7 +31,6 @@ module.exports = class Email {
       url: this.url,
       subject,
     });
-    console.log(html);
     const mailOptions = {
       from: this.from,
       to: this.to,
@@ -42,7 +41,6 @@ module.exports = class Email {
       if (error) {
         return console.log(error);
       }
-      console.log('Message for reset password link sent: %s', info.messageId);
     });
   }
 
