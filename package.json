@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@babel/polyfill": "^7.12.1",
+    "nodemon": "^2.0.19",
     "parcel-bundler": "^1.12.5"
   },
   "engines": {
